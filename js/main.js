@@ -17,15 +17,21 @@
   });
 
 
-	var fullHeight = function() {
+  var fullHeight = function() {
+    function adjustHeight() {
+        if ($(window).width() <= 768) {
+            $('.js-fullheight').css('height', 'auto');
+        } else {
+            $('.js-fullheight').css('height', $(window).height());
+        }
+    }
+    
+    adjustHeight(); // Set initial height
+    $(window).resize(adjustHeight); // Adjust on resize
+};
 
-		$('.js-fullheight').css('height', $(window).height());
-		$(window).resize(function(){
-			$('.js-fullheight').css('height', $(window).height());
-		});
+fullHeight();
 
-	};
-	fullHeight();
 
 	// loader
 	var loader = function() {

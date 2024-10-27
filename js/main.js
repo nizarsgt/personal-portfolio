@@ -17,21 +17,15 @@
   });
 
 
-  var fullHeight = function() {
-    function adjustHeight() {
-        if ($(window).width() <= 768) {
-            $('.js-fullheight').css('height', 'auto');
-        } else {
-            $('.js-fullheight').css('height', $(window).height());
-        }
-    }
-    
-    adjustHeight(); // Set initial height
-    $(window).resize(adjustHeight); // Adjust on resize
-};
+	var fullHeight = function() {
 
-fullHeight();
+		$('.js-fullheight').css('height', $(window).height());
+		$(window).resize(function(){
+			$('.js-fullheight').css('height', $(window).height());
+		});
 
+	};
+	fullHeight();
 
 	// loader
 	var loader = function() {
@@ -91,29 +85,26 @@ fullHeight();
 
 	var carousel = function() {
 		$('.home-slider').owlCarousel({
-	    loop:true,
-	    autoplay: true,
-	    margin:0,
-	    animateOut: 'fadeOut',
-	    animateIn: 'fadeIn',
-	    nav:false,
-	    autoplayHoverPause: false,
-	    items: 1,
-	    navText : ["<span class='ion-md-arrow-back'></span>","<span class='ion-chevron-right'></span>"],
-	    responsive:{
-	      0:{
-	        items:1
-	      },
-	      600:{
-	        items:1
-	      },
-	      1000:{
-	        items:1
-	      }
-	    }
+			loop: true,
+			autoplay: true,
+			margin: 0,
+			animateOut: 'fadeOut',
+			animateIn: 'fadeIn',
+			nav: false,
+			autoplayHoverPause: false,
+			items: 1,
+			touchDrag: true,
+			mouseDrag: true,
+			navText: ["<span class='ion-md-arrow-back'></span>", "<span class='ion-chevron-right'></span>"],
+			responsive: {
+				0: { items: 1 },
+				600: { items: 1 },
+				1000: { items: 1 }
+			}
 		});
 	};
 	carousel();
+	
 
 	$('nav .dropdown').hover(function(){
 		var $this = $(this);
